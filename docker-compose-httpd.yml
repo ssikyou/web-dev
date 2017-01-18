@@ -1,0 +1,23 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data/:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD : 123456
+  apache:
+    build: ./httpd
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./webroot/:/usr/local/apache2/htdocs/ 
+      - ./apache/logs/:/usr/local/apache2/logs/
+      - ./apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./apache/conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./apache/conf/extra/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
+    links:
+      - "mysql"
