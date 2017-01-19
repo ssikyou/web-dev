@@ -1,24 +1,63 @@
 version: '2'
 services:
+  appdata:
+    image: tianon/true
+    volumes:
+      - ./webroot:/var/www/html
+#      - ~/.composer:/var/www/.composer
+#     - ./html/app/code:/var/www/html/app/code
+#     - ./html/app/design:/var/www/html/app/design
+
   mysql:
     build: ./mysql
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql/data/:/var/lib/mysql/
-      - ./mysql/conf/:/etc/mysql/conf.d/
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
     environment:
-      MYSQL_ROOT_PASSWORD : 123456
+      MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: magento
       MYSQL_USER: magento
       MYSQL_PASSWORD: magento
-  apache:
+
+  app:
     build: ./apache-php
     ports: 
       - "80:80"
       - "443:443"
+    volumes_from:
+      - appdata
     volumes:
-      - ./webroot/:/var/www/html/ 
-      - ./apache-php/logs/:/var/log/apache2/
+      - ./apache-php/logs:/var/log/apache2
     links:
-      - "mysql"
+      - mysql
+
+  setup:
+    build: ./apache-php
+    command: /usr/local/bin/mage-setup
+    links:
+      - mysql
+    volumes_from:
+      - appdata
+    environment:
+        DOMAIN_NAME: qiqisdress.com
+        M2SETUP_DB_HOST: mysql
+        M2SETUP_DB_NAME: magento
+        M2SETUP_DB_USER: magento
+        M2SETUP_DB_PASSWORD: magento
+        M2SETUP_BASE_URL: http://localhost/
+ #       M2SETUP_BACKEND_NAME: /admin_test
+        M2SETUP_ADMIN_FIRSTNAME: Magento
+        M2SETUP_ADMIN_LASTNAME: User
+        M2SETUP_ADMIN_EMAIL: dummy@gmail.com
+        M2SETUP_ADMIN_USER: admin
+        M2SETUP_ADMIN_PASSWORD: admin123
+        M2SETUP_CURRENCY: USD
+        M2SETUP_LANG: en_US
+        M2SETUP_TIMEZONE: UTC
+        M2SETUP_VERSION: 2.1.3
+        M2SETUP_USE_SAMPLE_DATA: 'false'
+        M2SETUP_USE_ARCHIVE: 'true'
+        M2SETUP_USE_COMPOSER_ENTERPRISE: 'false'
+
