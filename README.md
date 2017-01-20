@@ -1,4 +1,5 @@
 # web-dev
+This is referenced from [Mage Inferno github](https://github.com/mageinferno/magento2-docker-compose).
 
 ## Two stacks:
 1. nginx + php-fpm
