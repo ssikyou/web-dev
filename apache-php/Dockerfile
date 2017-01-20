@@ -32,7 +32,7 @@ RUN docker-php-ext-install \
 
 RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/local/bin --filename=composer
-
+ 
 COPY conf/php.ini /usr/local/etc/php/
 COPY scripts/* /usr/local/bin/
 COPY conf/qiqisdress.com.conf /etc/apache2/sites-available/
@@ -43,3 +43,5 @@ RUN a2ensite qiqisdress.com.conf
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html
+
+CMD ["/usr/local/bin/start"]

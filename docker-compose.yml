@@ -32,6 +32,8 @@ services:
       - ./apache-php/logs:/var/log/apache2
     links:
       - mysql
+    environment:
+      DOMAIN_NAME: qiqisdress.com
 
   setup:
     build: ./apache-php
