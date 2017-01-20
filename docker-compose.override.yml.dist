@@ -1,0 +1,8 @@
+# You can use this file to change any of the defaults supplied in docker-compose.yml
+# Copy this file to docker-compose.override.yml. Docker compose will read these changes for you.
+#
+# Example showing how you can change the domain url in this file:
+#
+# setup:
+#   environment:
+#     M2SETUP_BASE_URL: http://xxx.com/
