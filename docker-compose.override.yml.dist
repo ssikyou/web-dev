@@ -6,7 +6,8 @@
 #version: '2'
 #services:
 #  app:
-#    dockerfile: Dockerfile.vps
+#    build:
+#      dockerfile: Dockerfile.vps
 #
 #  setup:
 #    environment:
