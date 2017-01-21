@@ -16,6 +16,7 @@ if [ "$M2SETUP_USE_ARCHIVE" = true ]; then
   else
     #curl -L http://pubfiles.nexcess.net/magento/ce-packages/magento2-$M2SETUP_VERSION.tar.gz | tar xzf - -o -C .
     tar xzf /tmp/magento2-$M2SETUP_VERSION.tar.gz -o -C .
+    cp /tmp/robots.txt pub/
   fi
 else
   /usr/local/bin/php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=$M2SETUP_VERSION .

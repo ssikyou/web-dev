@@ -37,6 +37,7 @@ COPY conf/php.ini /usr/local/etc/php/
 COPY scripts/* /usr/local/bin/
 COPY conf/qiqisdress.com.conf /etc/apache2/sites-available/
 COPY magento2-2.1.3.tar.gz /tmp/
+COPY robots.txt /tmp/
 
 RUN a2dissite 000-default.conf
 RUN a2ensite qiqisdress.com.conf
