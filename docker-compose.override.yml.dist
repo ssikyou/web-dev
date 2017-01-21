@@ -3,6 +3,11 @@
 #
 # Example showing how you can change the domain url in this file:
 #
-# setup:
-#   environment:
-#     M2SETUP_BASE_URL: http://xxx.com/
+#version: '2'
+#services:
+#  app:
+#    dockerfile: Dockerfile.vps
+#
+#  setup:
+#    environment:
+#      M2SETUP_BASE_URL: http://xxx.com/

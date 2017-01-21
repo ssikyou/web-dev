@@ -38,6 +38,9 @@ else
 fi
 
 #if [ 0 = 1 ]; then
+echo "Waiting for mysql ready..."
+sleep 30
+
 echo "Running Magento 2 setup script..."
 /usr/local/bin/php ./bin/magento setup:install \
   --db-host=$M2SETUP_DB_HOST \
