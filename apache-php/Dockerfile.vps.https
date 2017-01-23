@@ -38,7 +38,7 @@ COPY scripts/* /usr/local/bin/
 COPY conf/qiqisdress.https.com.conf /etc/apache2/sites-available/
 COPY magento2-2.1.3.tar.gz /tmp/
 COPY robots.txt /tmp/
-COPY certs/qiqisdress.com /tmp/
+COPY certs/qiqisdress.com/* /etc/apache2/certs/qiqisdress.com/
 
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl

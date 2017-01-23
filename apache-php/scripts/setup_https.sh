@@ -1,11 +1,20 @@
 #!/bin/bash
 
+if [ $# -lt 1 ]
+then
+    echo "Usage: ./setup_https.sh </path/to/certs parent dir>"
+    exit
+fi
+
 echo "install tool and cron job"
 curl https://get.acme.sh | sh
 
 echo "issue certs"
-#~/.acme.sh/acme.sh --issue --apache -d qiqisdress.com -d www.qiqisdress.com
-cp -R /tmp/qiqisdress.com ~/.acme.sh/
+if [ "$1" = "web" ]; then
+~/.acme.sh/acme.sh --issue --apache -d qiqisdress.com -d www.qiqisdress.com
+else
+cp -R $1 ~/.acme.sh/
+fi
 
 echo "install/copy certs to apache"
 ~/.acme.sh/acme.sh --installcert -d qiqisdress.com \

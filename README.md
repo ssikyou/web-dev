@@ -8,7 +8,7 @@ This is referenced from [Mage Inferno github](https://github.com/mageinferno/mag
 Currently, we choose the second one to setup magento2 env.
 
 ## Prepares
-1. ./clean.sh
+1. docker-compose down && ./clean.sh
 2. create docker-compose.override.yml to change some enviroment values
 
 ## Running setup
