@@ -50,7 +50,9 @@ services:
         M2SETUP_DB_NAME: magento
         M2SETUP_DB_USER: magento
         M2SETUP_DB_PASSWORD: magento
+        M2SETUP_SECURE: 'false'
         M2SETUP_BASE_URL: http://localhost/
+        M2SETUP_BASE_SECURE_URL: https://localhost/
         M2SETUP_BACKEND_NAME: admin_test
         M2SETUP_ADMIN_FIRSTNAME: Magento
         M2SETUP_ADMIN_LASTNAME: User
