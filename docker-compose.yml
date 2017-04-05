@@ -24,6 +24,8 @@ services:
   app:
     build:
       context: ./apache-php
+      args:
+        DOMAIN_NAME: localhost
     ports: 
       - "80:80"
       - "443:443"
@@ -34,18 +36,20 @@ services:
     links:
       - mysql
     environment:
-      DOMAIN_NAME: qiqisdress.com
+      DOMAIN_NAME: localhost
 
   setup:
     build:
       context: ./apache-php
+      args:
+        DOMAIN_NAME: localhost
     command: /usr/local/bin/mage-setup
     links:
       - mysql
     volumes_from:
       - appdata
     environment:
-        DOMAIN_NAME: qiqisdress.com
+        DOMAIN_NAME: localhost
         M2SETUP_DB_HOST: mysql
         M2SETUP_DB_NAME: magento
         M2SETUP_DB_USER: magento
@@ -62,7 +66,7 @@ services:
         M2SETUP_CURRENCY: USD
         M2SETUP_LANG: en_US
         M2SETUP_TIMEZONE: UTC
-        M2SETUP_VERSION: 2.1.3
+        M2SETUP_VERSION: 2.1.5
         M2SETUP_USE_SAMPLE_DATA: 'false'
         M2SETUP_USE_ARCHIVE: 'true'
         M2SETUP_USE_COMPOSER_ENTERPRISE: 'false'

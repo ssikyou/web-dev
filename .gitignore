@@ -28,7 +28,8 @@ modules.builtin
 \#*#
 mysql/data/
 apache-php/logs/
-webroot/qiqisdress.com/
+webroot/localhost/
+webroot/*.com/
 
 #
 # ctags and cscope files

@@ -9,10 +9,18 @@
 #  app:
 #    build:
 #      dockerfile: Dockerfile.vps
+#	   args:
+#	     DOMAIN_NAME: xxx.com
+#	 environment:
+#      DOMAIN_NAME: xxx.com
+#
 #  setup:
 #    build:
 #      dockerfile: Dockerfile.vps
+#	   args:
+#	     DOMAIN_NAME: xxx.com
 #    environment:
+#      DOMAIN_NAME: xxx.com
 #      M2SETUP_BASE_URL: http://xxx.com/
 #
 #Https version:
@@ -21,10 +29,17 @@
 #  app:
 #    build:
 #      dockerfile: Dockerfile.vps.https
+#	   args:
+#	     DOMAIN_NAME: xxx.com
+#	 environment:
+#      DOMAIN_NAME: xxx.com
 #
 #  setup:
 #    build:
 #      dockerfile: Dockerfile.vps.https
+#	   args:
+#	     DOMAIN_NAME: xxx.com
 #    environment:
+#      DOMAIN_NAME: xxx.com
 #      M2SETUP_SECURE: 'true'
 #      M2SETUP_BASE_SECURE_URL: https://xxx.com/

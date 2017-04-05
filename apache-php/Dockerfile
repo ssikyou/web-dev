@@ -33,14 +33,16 @@ RUN docker-php-ext-install \
 RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/local/bin --filename=composer
  
+ARG DOMAIN_NAME
 COPY conf/php.ini /usr/local/etc/php/
 COPY scripts/* /usr/local/bin/
-COPY conf/qiqisdress.com.conf /etc/apache2/sites-available/
-COPY magento2-2.1.3.tar.gz /tmp/
+COPY conf/base.conf /etc/apache2/sites-available/
+COPY conf/${DOMAIN_NAME}.conf /etc/apache2/sites-available/
+COPY m2files/* /tmp/
 COPY robots.txt /tmp/
 
 RUN a2dissite 000-default.conf
-RUN a2ensite qiqisdress.com.conf
+RUN a2ensite ${DOMAIN_NAME}.conf
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html
