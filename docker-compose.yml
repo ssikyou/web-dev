@@ -37,6 +37,7 @@ services:
       - mysql
     environment:
       DOMAIN_NAME: localhost
+      XDEBUG_CONFIG: remote_host=172.18.0.1
 
   setup:
     build:

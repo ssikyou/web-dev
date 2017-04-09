@@ -31,6 +31,34 @@ If you modified the Dockerfile, you need to rebuild the images
 docker-compose build --force-rm --no-cache app
 ```
 
+### Setup Xdebug
+#### Xdebug server
+You should override "XDEBUG_CONFIG" in docker-compose.override.yml, e.g. set your remote host ip.
+
+#### Xdebug client
+For sublime, you should install Xdebug plugin first and then add some configs to your project setting, e.g. 
+```
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+
+    "settings": {
+        "xdebug": {
+            "url": "http://localhost/",
+        	"path_mapping": {"/var/www/html/localhost/" : "/home/cong/web-dev/webroot/localhost/"}        
+        }
+    }
+
+}
+
+```
+Refer to https://github.com/martomo/SublimeTextXdebug for details.
+
 ## Setup real domain enviroment
 
 ### Prepares
