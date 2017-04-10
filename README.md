@@ -26,9 +26,26 @@ docker-compose build --force-rm --no-cache setup
 ```
 docker-compose up -d app
 ```
+#### Update app container
+If you need to modify app container, there are two methods:
+1. You just attach to the container and modify the enviroment
+```
+docker exec -it webdev_app_1 bash
+```
+
+2. Modify outside and restart the container.
 If you modified the Dockerfile, you need to rebuild the images
 ```
 docker-compose build --force-rm --no-cache app
+```
+Stop and remove the container
+```
+docker stop webdev_app_1
+docker rm webdev_app_1
+```
+Start the modified container again
+```
+docker-compose up -d app
 ```
 
 ### Setup Xdebug
